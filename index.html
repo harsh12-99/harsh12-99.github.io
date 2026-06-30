@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Harsh Malviya — Full Stack Engineer</title>
-<meta name="description" content="Harsh Malviya — Full Stack JavaScript Developer. 6+ years building scalable systems with React, Next.js, TypeScript, Node.js and Azure." />
+<meta name="description" content="Harsh Malviya — Full Stack JavaScript Developer at EY. 5+ years building scalable systems with ReactJS, Next.js, TypeScript, Node.js and Azure." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -253,6 +253,35 @@
   }
 
   /* trace card */
+  .portrait-frame{
+    width:88px;
+    height:88px;
+    border-radius:50%;
+    margin-bottom:20px;
+    position:relative;
+    background:var(--bg-raised);
+    border:2px solid var(--signal-dim);
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .portrait-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .portrait-initials{
+    display:none;
+    font-family:var(--font-mono);
+    font-size:24px;
+    font-weight:600;
+    color:var(--signal);
+  }
+  .portrait-fallback .portrait-img{ display:none; }
+  .portrait-fallback .portrait-initials{ display:block; }
+
   .trace-card{
     background:var(--bg-raised);
     border:1px solid var(--line);
@@ -405,6 +434,40 @@
     border-radius:5px;
   }
 
+  /* ===== EDUCATION / CERTS ===== */
+  .edu-grid{
+    margin-top:56px;
+    padding-top:36px;
+    border-top:1px solid var(--line-soft);
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:40px;
+  }
+  @media (max-width:920px){ .edu-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:600px){ .edu-grid{ grid-template-columns:1fr; gap:32px; } }
+  .edu-item{
+    padding:14px 0;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .edu-item:last-child{ border-bottom:none; }
+  .edu-title{
+    font-size:15px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .edu-org{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    color:var(--signal);
+    margin-top:4px;
+  }
+  .edu-meta{
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    color:var(--ink-faint);
+    margin-top:4px;
+  }
+
   /* ===== PROJECTS ===== */
   .proj-grid{
     display:grid;
@@ -425,6 +488,7 @@
     min-height:230px;
   }
   .proj-card:hover{ background:var(--bg-raised-2); }
+  .proj-card-static{ cursor:default; }
   .proj-top{
     display:flex;
     justify-content:space-between;
@@ -467,6 +531,64 @@
     letter-spacing:0.02em;
   }
   .proj-stack span:not(:last-child)::after{ content:'·'; margin-left:7px; color:var(--line); }
+
+  /* ===== TESTIMONIALS ===== */
+  .testi-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  @media (max-width:760px){ .testi-grid{ grid-template-columns:1fr; } }
+  .testi-card{
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:30px 28px;
+    position:relative;
+    display:block;
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .testi-card:hover{
+    border-color:var(--signal);
+    background:var(--bg-raised-2);
+  }
+  .testi-card::before{
+    content:'"';
+    font-family:var(--font-display);
+    font-size:52px;
+    color:var(--signal-dim);
+    position:absolute;
+    top:8px;
+    left:20px;
+    line-height:1;
+    opacity:0.6;
+  }
+  .testi-quote{
+    color:var(--ink-dim);
+    font-size:15px;
+    line-height:1.75;
+    padding-top:18px;
+    position:relative;
+    z-index:1;
+  }
+  .testi-meta{
+    margin-top:20px;
+    padding-top:16px;
+    border-top:1px solid var(--line-soft);
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+  }
+  .testi-name{
+    font-size:14px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .testi-role{
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    color:var(--ink-faint);
+  }
 
   /* ===== SKILLS ===== */
   .skill-cols{
@@ -576,6 +698,8 @@
       <a href="#about">about</a>
       <a href="#experience">experience</a>
       <a href="#projects">projects</a>
+      <a href="#repos">repos</a>
+      <a href="#testimonials">testimonials</a>
       <a href="#skills">skills</a>
       <a href="#contact">contact</a>
     </nav>
@@ -589,40 +713,47 @@
   <section class="hero" style="border-top:none; padding-top:168px;">
     <div class="wrap hero-grid">
       <div>
-        <div class="eyebrow"><span class="dot"></span> available for new opportunities</div>
+        <div class="eyebrow"><span class="dot"></span> senior software engineer · indore, india</div>
         <h1 class="title">Harsh Malviya —<br><span class="accent">full stack</span> engineer<br>for the cloud.</h1>
         <p class="hero-sub">
-          I'm a <b>Full Stack JavaScript Developer</b> with 6 years of experience shipping production systems on <b>React, Next.js, TypeScript and Node.js</b>, with deep work in <b>Azure</b> cloud architecture. I've built frontend platforms for Microsoft's Portal Team and visualization tooling for Azure Resource Graph, and led frontend engineering for a global climate data hub used by researchers worldwide.
+          I'm a <b>Full Stack JavaScript Developer</b> with 5+ years of experience building scalable, high-performance applications using <b>ReactJS, Next.js, TypeScript, Node.js</b> and Azure-focused cloud development. I've contributed to Microsoft's Portal Team and Global Demand Services, the Azure Resource Graph Visualizer, and served as Frontend Lead for the <b>UNFCCC Climate Data Hub</b> — used by policymakers and researchers across the world.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#projects">view projects →</a>
+          <a class="btn btn-ghost" href="assets/Harsh_Malviya_Resume.pdf" target="_blank" rel="noopener">resume ↓</a>
           <a class="btn btn-ghost" href="https://github.com/harsh12-99" target="_blank" rel="noopener">github ↗</a>
           <a class="btn btn-ghost" href="https://www.linkedin.com/in/harshmalviya/" target="_blank" rel="noopener">linkedin ↗</a>
         </div>
       </div>
 
-      <div class="trace-card reveal">
-        <div class="trace-head"><span>// system_trace.log</span><span id="traceClock">00:00:00</span></div>
-        <svg class="trace-svg" viewBox="0 0 320 260" id="traceSvg">
-          <line x1="40" y1="30" x2="40" y2="230" stroke="var(--line)" stroke-width="1.5" />
-          <path id="tracePath" d="M40,30 L40,30" stroke="#5B8DEF" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <div>
+        <div class="portrait-frame reveal">
+          <img src="assets/profile.jpg" alt="Harsh Malviya" class="portrait-img" onerror="this.parentElement.classList.add('portrait-fallback')">
+          <div class="portrait-initials">HM</div>
+        </div>
+        <div class="trace-card reveal">
+          <div class="trace-head"><span>// system_trace.log</span><span id="traceClock">00:00:00</span></div>
+          <svg class="trace-svg" viewBox="0 0 320 260" id="traceSvg">
+            <line x1="40" y1="30" x2="40" y2="230" stroke="var(--line)" stroke-width="1.5" />
+            <path id="tracePath" d="M40,30 L40,30" stroke="#5B8DEF" stroke-width="2" fill="none" stroke-linecap="round"/>
 
-          <circle cx="40" cy="30" r="5" fill="#5B8DEF" />
-          <text x="56" y="27" class="trace-node-label">Microsoft Portal Team</text>
-          <text x="56" y="40" class="trace-node-sub">frontend platform · azure</text>
+            <circle cx="40" cy="30" r="5" fill="#D8973C" />
+            <text x="56" y="27" class="trace-node-label">EY LLP · Senior Consultant</text>
+            <text x="56" y="40" class="trace-node-sub">2023 — present</text>
 
-          <circle cx="40" cy="100" r="5" fill="#5B8DEF" />
-          <text x="56" y="97" class="trace-node-label">Azure Resource Graph</text>
-          <text x="56" y="110" class="trace-node-sub">visualization · rendering</text>
+            <circle cx="40" cy="100" r="5" fill="#5B8DEF" />
+            <text x="56" y="97" class="trace-node-label">Microsoft (via EY)</text>
+            <text x="56" y="110" class="trace-node-sub">contractor · next.js</text>
 
-          <circle cx="40" cy="170" r="5" fill="#5B8DEF" />
-          <text x="56" y="167" class="trace-node-label">UNFCCC Climate Hub</text>
-          <text x="56" y="180" class="trace-node-sub">frontend lead · data ui</text>
+            <circle cx="40" cy="170" r="5" fill="#5B8DEF" />
+            <text x="56" y="167" class="trace-node-label">Capgemini</text>
+            <text x="56" y="180" class="trace-node-sub">frontend developer</text>
 
-          <circle cx="40" cy="230" r="5" fill="#D8973C" />
-          <text x="56" y="227" class="trace-node-label">Open Source · 2026</text>
-          <text x="56" y="240" class="trace-node-sub">contributing in progress</text>
-        </svg>
+            <circle cx="40" cy="230" r="5" fill="#5B8DEF" />
+            <text x="56" y="227" class="trace-node-label">Codoxy IT Solutions</text>
+            <text x="56" y="240" class="trace-node-sub">software engineer</text>
+          </svg>
+        </div>
       </div>
     </div>
   </section>
@@ -636,18 +767,18 @@
       </div>
       <div class="about-grid">
         <div class="reveal">
-          <p>I'm a dedicated, detail-oriented engineer who builds <b>scalable, high-performance applications</b>. My toolkit centers on React, Next.js, TypeScript and Node.js, backed by Azure-focused cloud development practice.</p>
-          <p>I thrive on solving real problems with clean, maintainable code — engineering intuitive interfaces, optimizing performance, and designing architectures meant to scale reliably over years, not just ship once.</p>
-          <p>I've delivered production-grade work across enterprise and global-impact domains: <b>Microsoft's Portal Team</b> and <b>Microsoft GDS</b>, where I worked with Azure services and secure, large-scale frontend platforms; the <b>Azure Resource Graph Visualizer</b>, improving cloud-resource exploration through better data visualization and rendering performance; and as <b>Frontend Lead</b> for the <b>UNFCCC Climate Data Hub</b>, guiding frontend architecture for tools used by climate experts globally.</p>
+          <p>I'm a dedicated, detail-oriented <b>Full Stack JavaScript Developer</b> with 5+ years of experience building scalable, high-performance applications using ReactJS, Next.js, TypeScript, Node.js, and Azure-focused cloud development.</p>
+          <p>I thrive on solving real problems with clean, maintainable code — engineering intuitive interfaces, optimizing performance, and designing architectures that scale reliably. I'm most at home in fast-paced product teams where UX, reliability, and long-term maintainability truly matter.</p>
+          <p>I've contributed to <b>Microsoft's Portal Team</b> and <b>Microsoft GDS</b> (Global Demand Services), working deeply with Azure services, secure engineering patterns, and large-scale frontend platforms — including the <b>Azure Resource Graph Visualizer</b>, enhancing cloud-resource exploration through better data visualization and rendering performance. I also served as <b>Frontend Lead</b> for the <b>UNFCCC Climate Data Hub</b>, guiding frontend architecture and delivering data-driven modules used by climate experts around the world.</p>
         </div>
         <div class="reveal">
           <div class="stat-row">
-            <div class="stat"><div class="num">6</div><div class="lbl">years experience</div></div>
-            <div class="stat"><div class="num">11</div><div class="lbl">public repos</div></div>
-            <div class="stat"><div class="num">3x</div><div class="lbl">pull shark</div></div>
+            <div class="stat"><div class="num">5+</div><div class="lbl">years experience</div></div>
+            <div class="stat"><div class="num">6</div><div class="lbl">projects shipped</div></div>
+            <div class="stat"><div class="num">8.02</div><div class="lbl">cgpa, b.e.</div></div>
           </div>
-          <p style="margin-top:28px;">Beyond core delivery, I've migrated legacy systems to modern stacks, cut bundle sizes, built reusable component architectures, and shipped CI/CD pipelines on Azure DevOps, Jenkins and GitHub Actions — collaborating across large, distributed Agile teams.</p>
-          <p style="margin-top:0;">Currently learning <b>ADO.NET</b>, and looking to collaborate with other developers. 2026 goal: contribute more to open source.</p>
+          <p style="margin-top:28px;">Tech I work with: ReactJS, Next.js, TypeScript, JavaScript (ES6+), Redux, Node.js, Express, MongoDB, SQL Server, REST APIs, Azure, Docker, CI/CD (Jenkins, GitHub Actions, ADO), and unit testing.</p>
+          <p style="margin-top:0;">What drives me: building intuitive UI, optimizing performance, writing clean and resilient code, and constantly improving my engineering craft. Fluent in Hindi and English.</p>
         </div>
       </div>
     </div>
@@ -663,53 +794,108 @@
       <div class="timeline">
 
         <div class="tl-item reveal">
-          <div class="tl-period">2023 — present</div>
+          <div class="tl-period">Aug 2023 — present</div>
           <div>
-            <div class="tl-role">Frontend Lead</div>
-            <span class="tl-org">UNFCCC Climate Data Hub</span>
-            <p class="tl-desc">Led frontend architecture for a global climate-data platform, improving UI performance and shipping data-driven, scalable modules used by climate experts around the world.</p>
+            <div class="tl-role">Senior Consultant</div>
+            <span class="tl-org">EY LLP</span>
+            <p class="tl-desc">Working as a full stack developer on ReactJS, Node.js, TypeScript, HTML and SASS — including Frontend Lead duties on the UNFCCC Climate Data Hub.</p>
             <div class="tl-tags">
-              <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Data Visualization</span><span class="tag">Architecture</span>
+              <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">TypeScript</span><span class="tag">SASS</span>
             </div>
           </div>
         </div>
 
         <div class="tl-item reveal">
-          <div class="tl-period">2021 — 2023</div>
+          <div class="tl-period">Apr 2024 — Sept 2025</div>
           <div>
-            <div class="tl-role">Full Stack Developer</div>
-            <span class="tl-org">Microsoft — Resource Graph Visualizer</span>
-            <p class="tl-desc">Enhanced Azure cloud-resource exploration through improved data visualization, rendering performance, and end-to-end user workflows.</p>
+            <div class="tl-role">Frontend Developer</div>
+            <span class="tl-org">Microsoft — Contractor via EY LLP</span>
+            <p class="tl-desc">Worked as a frontend developer on Microsoft's Customer Experience Platform, building with Next.js, TypeScript, HTML, SASS and Material UI.</p>
             <div class="tl-tags">
-              <span class="tag">Azure</span><span class="tag">React</span><span class="tag">Performance</span>
+              <span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Material UI</span><span class="tag">SASS</span>
             </div>
           </div>
         </div>
 
         <div class="tl-item reveal">
-          <div class="tl-period">2020 — 2021</div>
+          <div class="tl-period">Mar 2021 — Aug 2023</div>
           <div>
-            <div class="tl-role">Frontend Engineer</div>
-            <span class="tl-org">Microsoft — Portal Team / GDS</span>
-            <p class="tl-desc">Worked deeply with Azure services, secure engineering patterns, and large-scale frontend platforms within Microsoft's Global Demand Services org.</p>
+            <div class="tl-role">Frontend Developer</div>
+            <span class="tl-org">Capgemini</span>
+            <p class="tl-desc">Worked as a frontend developer building with ReactJS, TypeScript, HTML and SASS.</p>
             <div class="tl-tags">
-              <span class="tag">Azure</span><span class="tag">Next.js</span><span class="tag">Secure Engineering</span>
+              <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">HTML</span><span class="tag">SASS</span>
             </div>
           </div>
         </div>
 
         <div class="tl-item reveal">
-          <div class="tl-period">earlier</div>
+          <div class="tl-period">Jan 2020 — Mar 2021</div>
           <div>
-            <div class="tl-role">Full Stack JavaScript Developer</div>
-            <span class="tl-org">Various Engineering Teams</span>
-            <p class="tl-desc">Migrated legacy systems to modern stacks, built CI/CD pipelines with Azure DevOps, Jenkins and GitHub Actions, and designed reusable component architecture across Agile teams.</p>
+            <div class="tl-role">Software Engineer</div>
+            <span class="tl-org">Codoxy IT Solutions Pvt. Ltd.</span>
+            <p class="tl-desc">Worked as a web developer building with ReactJS, TypeScript, HTML5, SASS and CodeIgniter (PHP).</p>
             <div class="tl-tags">
-              <span class="tag">Node.js</span><span class="tag">CI/CD</span><span class="tag">JavaScript</span>
+              <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">PHP / CodeIgniter</span>
             </div>
           </div>
         </div>
 
+      </div>
+
+      <div class="edu-grid reveal">
+        <div class="edu-col">
+          <div class="skill-col-title">education</div>
+          <div class="edu-item">
+            <div class="edu-title">Bachelor of Engineering — Computer Science</div>
+            <div class="edu-org">Acropolis Institute of Technology and Research, Indore</div>
+            <div class="edu-meta">Aug 2016 — Sept 2020 · 8.02 CGPA</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-title">Senior Secondary (PCM)</div>
+            <div class="edu-org">Rashtriya Vidya Mandir, Indore</div>
+            <div class="edu-meta">2016 · 80.4%</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-title">Higher Secondary</div>
+            <div class="edu-org">Rashtriya Vidya Mandir, Indore</div>
+            <div class="edu-meta">2014 · 84.8%</div>
+          </div>
+        </div>
+        <div class="edu-col">
+          <div class="skill-col-title">trainings &amp; certificates</div>
+          <div class="edu-item">
+            <div class="edu-title">EY Artificial Intelligence — AI Engineering, Bronze Learning</div>
+            <div class="edu-org">EY</div>
+            <div class="edu-meta">Issued Feb 2024</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-title">Microsoft Azure Fundamentals (AZ-900)</div>
+            <div class="edu-org">Microsoft</div>
+            <div class="edu-meta">Issued Oct 2021 · Credential ID 992125422</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-title">MTA Database Certification</div>
+            <div class="edu-org">Microsoft</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-title">ReactJS Course</div>
+            <div class="edu-org">Udemy</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-title">Introduction to Front-End Development with ReactJS</div>
+            <div class="edu-org">Coursera</div>
+          </div>
+          <p style="margin-top:14px;"><a href="https://www.linkedin.com/in/harshmalviya/details/certifications/" target="_blank" rel="noopener" style="font-family:var(--font-mono); font-size:12px; color:var(--signal);">see all 6 licenses on linkedin →</a></p>
+        </div>
+        <div class="edu-col">
+          <div class="skill-col-title">publication</div>
+          <div class="edu-item">
+            <div class="edu-title">SOI (Size of Object in Image)</div>
+            <div class="edu-org">International Journal for Scientific Research and Development (IJSRD)</div>
+            <div class="edu-meta">May 1, 2020</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -719,7 +905,60 @@
     <div class="wrap">
       <div class="section-head reveal">
         <h2>Projects</h2>
-        <span class="section-tag">// pinned_on_github</span>
+        <span class="section-tag">// professional_work</span>
+      </div>
+      <div class="proj-grid reveal">
+
+        <div class="proj-card proj-card-static">
+          <div class="proj-top">
+            <div class="proj-name">Climate Data Hub</div>
+          </div>
+          <div class="proj-desc">UNFCCC platform bringing official climate data from 190+ countries into one place for policymakers, researchers and civil society. Led frontend development, built data-driven modules with efficient state management and API integration, and optimized performance with memoization and lazy loading.</div>
+          <div class="proj-stack"><span>React</span><span>TypeScript</span><span>Data Viz</span><span>Architecture</span></div>
+        </div>
+
+        <div class="proj-card proj-card-static">
+          <div class="proj-top">
+            <div class="proj-name">Customer Experience Platform (CEP)</div>
+          </div>
+          <div class="proj-desc">A multi-phased, commodity-agnostic platform unifying Retail's customer-facing Energy Manager, My Constellation and Constellation Home into one solution. Built with Next.js App Router and Redux for centralized state, with code-splitting and caching for performance.</div>
+          <div class="proj-stack"><span>Next.js</span><span>TypeScript</span><span>MUI</span><span>Redux</span></div>
+        </div>
+
+        <div class="proj-card proj-card-static">
+          <div class="proj-top">
+            <div class="proj-name">Chitralekha</div>
+          </div>
+          <div class="proj-desc">Open-source video subtitling platform across Indic languages, with ML-model support. Built multilingual subtitle support with Unicode handling, and a custom subtitle editor with timeline synchronization and real-time updates.</div>
+          <div class="proj-stack"><span>React</span><span>TypeScript</span><span>Video APIs</span></div>
+        </div>
+
+        <div class="proj-card proj-card-static">
+          <div class="proj-top">
+            <div class="proj-name">Customer First</div>
+          </div>
+          <div class="proj-desc">Automotive dealership platform digitizing the full customer lifecycle — onboarding, vehicle purchase, and delivery — unifying sales, CRM and order processing into one system.</div>
+          <div class="proj-stack"><span>React</span><span>TypeScript</span><span>MUI</span></div>
+        </div>
+
+        <div class="proj-card proj-card-static">
+          <div class="proj-top">
+            <div class="proj-name">Funmed</div>
+          </div>
+          <div class="proj-desc">A web app connecting doctors and patients online — registration, consultations, and doctor-managed diet charts, reports and health indexes.</div>
+          <div class="proj-stack"><span>React</span><span>Tailwind</span><span>REST APIs</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GITHUB REPOS -->
+  <section id="repos">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>GitHub Repos</h2>
+        <span class="section-tag">// open_source_and_personal</span>
       </div>
       <div class="proj-grid reveal">
 
@@ -766,6 +1005,35 @@
     </div>
   </section>
 
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>What people say</h2>
+        <span class="section-tag">// linkedin_recommendations</span>
+      </div>
+      <div class="testi-grid reveal">
+        <a class="testi-card" href="https://www.linkedin.com/in/sumedha-dutta-b99613142/" target="_blank" rel="noopener">
+          <p class="testi-quote">Worked closely with Harsh on the same team for about a year and describes him as a highly skilled frontend engineer who consistently delivers high-quality solutions with speed and precision — collaborative, dependable, and great to work with.</p>
+          <div class="testi-meta">
+            <span class="testi-name">Sumedha Dutta</span>
+            <span class="testi-role">Senior Full Stack .NET Developer · view profile ↗</span>
+          </div>
+        </a>
+        <a class="testi-card" href="https://www.linkedin.com/in/harshmalviya/details/recommendations/" target="_blank" rel="noopener">
+          <p class="testi-quote">Managed Harsh directly and praised his strong proficiency in React and frontend development best practices, his eye for clean and responsive interfaces, and his proactive, ownership-driven approach to problem-solving.</p>
+          <div class="testi-meta">
+            <span class="testi-name">Himanshu Gupta</span>
+            <span class="testi-role">Technical Leader · view on LinkedIn ↗</span>
+          </div>
+        </a>
+      </div>
+      <p style="margin-top:20px; text-align:center;">
+        <a href="https://www.linkedin.com/in/harshmalviya/details/recommendations/" target="_blank" rel="noopener" style="font-family:var(--font-mono); font-size:12px; color:var(--ink-faint);">3 recommendations received on LinkedIn →</a>
+      </p>
+    </div>
+  </section>
+
   <!-- SKILLS -->
   <section id="skills">
     <div class="wrap">
@@ -775,27 +1043,41 @@
       </div>
       <div class="skill-cols reveal">
         <div>
-          <div class="skill-col-title">frontend</div>
+          <div class="skill-col-title">technical</div>
           <ul class="skill-list">
-            <li>React</li><li>Next.js</li><li>TypeScript</li><li>JavaScript (ES6+)</li><li>HTML5 / CSS3 / Sass</li>
+            <li>ReactJS</li><li>Next.js</li><li>Node.js</li><li>TypeScript / ES6</li><li>HTML5 / CSS3</li>
           </ul>
         </div>
         <div>
-          <div class="skill-col-title">backend &amp; data</div>
+          <div class="skill-col-title">ui &amp; styling</div>
           <ul class="skill-list">
-            <li>Node.js</li><li>SQL</li><li>MySQL</li><li>MongoDB</li>
+            <li>Bootstrap</li><li>Material UI</li><li>Fluent UI</li><li>Tailwind CSS</li>
           </ul>
         </div>
         <div>
-          <div class="skill-col-title">cloud &amp; devops</div>
+          <div class="skill-col-title">tooling &amp; quality</div>
           <ul class="skill-list">
-            <li>Microsoft Azure</li><li>Azure DevOps</li><li>Jenkins</li><li>GitHub Actions</li><li>ADO.NET <em style="color:var(--ink-faint); font-style:italic;">(learning)</em></li>
+            <li>Git &amp; GitHub</li><li>Azure DevOps (ADO)</li><li>CI/CD</li><li>React Testing Library</li>
           </ul>
         </div>
         <div>
-          <div class="skill-col-title">tools</div>
+          <div class="skill-col-title">tools &amp; workflow</div>
           <ul class="skill-list">
-            <li>Git &amp; GitHub</li><li>VS Code</li><li>npm</li><li>Terminal</li>
+            <li>Jira</li><li>Visual Studio Code</li><li>SQL Developer</li><li>Kanban Board</li><li>Source Tree</li>
+          </ul>
+        </div>
+      </div>
+      <div class="skill-cols reveal" style="margin-top:36px;">
+        <div>
+          <div class="skill-col-title">functional</div>
+          <ul class="skill-list">
+            <li>Strategic / tactical planning</li><li>Communication &amp; interpretation</li><li>Multi-tasking</li>
+          </ul>
+        </div>
+        <div>
+          <div class="skill-col-title">languages</div>
+          <ul class="skill-list">
+            <li>Hindi (fluent)</li><li>English (fluent)</li>
           </ul>
         </div>
       </div>
@@ -810,10 +1092,12 @@
         <h2>Let's build something<br>that scales.</h2>
         <p>Looking to connect with other developers, or hiring for a role that needs production-grade React, Next.js and Azure experience? Reach out.</p>
         <div class="contact-links">
-          <a class="btn btn-primary" href="https://www.linkedin.com/in/harshmalviya/" target="_blank" rel="noopener">connect on linkedin →</a>
+          <a class="btn btn-primary" href="mailto:malviya.harsh12@gmail.com">email me →</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/harshmalviya/" target="_blank" rel="noopener">linkedin ↗</a>
           <a class="btn btn-ghost" href="https://github.com/harsh12-99" target="_blank" rel="noopener">github ↗</a>
-          <a class="btn btn-ghost" href="https://twitter.com/harsh_12_" target="_blank" rel="noopener">twitter ↗</a>
+          <a class="btn btn-ghost" href="tel:+919752136209">+91 97521 36209</a>
         </div>
+        <p style="margin-top:28px; font-family:var(--font-mono); font-size:12px; color:var(--ink-faint);">Indore, Madhya Pradesh, India</p>
       </div>
     </div>
   </section>
